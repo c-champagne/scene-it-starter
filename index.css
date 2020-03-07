@@ -14,3 +14,17 @@ body {
 	margin-top: 20px;
 }
 
+.movies-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.card-img-top {
+	width: 200px;
+	height: auto;
+}
+
+.add {
+	padding: 5px;
+	margin: 10px;
+}
