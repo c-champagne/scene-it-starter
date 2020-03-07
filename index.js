@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function(){
         return movieHTML.join("")
     }
     var moviesContainer = document.getElementById("movies-container");
-    moviesContainer.innerHTML = renderMovies(movieData);
     
     
-    document.getElementById("myForm").addEventListener("submit", function(e){
+    
+    document.getElementById("search-form").addEventListener("submit", function(e){
         e.preventDefault();
-        
+        moviesContainer.innerHTML = renderMovies(movieData);
     })
 
     
