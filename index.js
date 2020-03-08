@@ -4,13 +4,12 @@ document.addEventListener('DOMContentLoaded', function(){
         movieHTML = movieArray.map(function (currentMovie) {
             return `
             <div class="col-3 card movie">
-						<img class="card-img-top poster" src="${currentMovie.Poster}" />
+						<img class="card-img-top poster" src="${currentMovie.Poster}"/>
 						<h4 class="movieTitle">${currentMovie.Title}</h4>
 						<h5 class="releaseDate">${currentMovie.Year}</h5>
 						<button class="add" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
-					</div>
+			</div>
             `
-            //${saveToWatchlist(${currentMovie.imdbID)}
         })
         return movieHTML.join("")
     }
