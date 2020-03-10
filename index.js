@@ -1,3 +1,4 @@
+var returnedMovies;
 document.addEventListener('DOMContentLoaded', function(){
     function renderMovies(movieArray) {
         var movieHTML = [];
@@ -23,16 +24,19 @@ document.addEventListener('DOMContentLoaded', function(){
         var urlEncodedSearchString = encodeURIComponent(searchString);
         axios.get("http://www.omdbapi.com/?apikey=84596469&s=" + urlEncodedSearchString).then(function(response) {
             console.log(response.data);
+            returnedMovies = response.data.Search;
             moviesContainer.innerHTML = renderMovies(response.data.Search);
+            
         });
-        //moviesContainer.innerHTML = renderMovies(movieData);
     })
 
     
     
 });
+
+
 function saveToWatchlist(imdbID){
-    var movie = movieData.find(function (currentMovie){
+    var movie = returnedMovies.find(function (currentMovie){
         return currentMovie.imdbID == imdbID;  
     });
     var watchlistJSON = localStorage.getItem('watchlist');
