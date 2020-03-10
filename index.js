@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', function(){
             return `
             <div class="col-3 card movie">
 						<img class="card-img-top poster" src="${currentMovie.Poster}"/>
-						<h4 class="movieTitle">${currentMovie.Title}</h4>
-						<h5 class="releaseDate">${currentMovie.Year}</h5>
-						<button class="add" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
-			</div>
+                        <div class= card-body>
+                            <h4 class="movieTitle">${currentMovie.Title}</h4>
+						    <h5 class="releaseDate">${currentMovie.Year}</h5>
+						    <button class="btn btn-outline-primary btn-lg add" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
+                        </div>
+             </div>
             `
         })
         return movieHTML.join("")
@@ -17,7 +19,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var moviesContainer = document.getElementById("movies-container");
     document.getElementById("search-form").addEventListener("submit", function(e){
         e.preventDefault();
-        moviesContainer.innerHTML = renderMovies(movieData);
+        var searchString = document.getElementById("search-bar").value;
+        var urlEncodedSearchString = encodeURIComponent(searchString);
+        axios.get("http://www.omdbapi.com/?apikey=84596469&s=" + urlEncodedSearchString).then(function(response) {
+            console.log(response.data);
+            moviesContainer.innerHTML = renderMovies(response.data.Search);
+        });
+        //moviesContainer.innerHTML = renderMovies(movieData);
     })
 
     
