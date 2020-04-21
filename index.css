@@ -1,5 +1,6 @@
 body {
-	background-color: #B2E9FD;
+	/* background-color: #B2E9FD; */
+	background-image: url(./images/moviebg.jpg);
 }
 
 .header h2 {
@@ -7,7 +8,8 @@ body {
 }
 
 .header p {
-	color: #50524F;
+	color: #DC4247;
+	font-weight: bold;
 }
 
 .results {
@@ -24,6 +26,12 @@ body {
 .card {
 	margin: 10px;
 	padding: 0px;
+}
+
+.footer {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 /*.card-img-top {
