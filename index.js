@@ -1,6 +1,7 @@
 var returnedMovies;
 document.addEventListener('DOMContentLoaded', function(){
-    function renderMovies(movieArray) {
+    let renderMovies = (movieArray) => {
+    //function renderMovies(movieArray) {
         var movieHTML = [];
         movieHTML = movieArray.map(function (currentMovie) {
             if (currentMovie.Poster == "N/A") {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
                             <div class= card-body>
                                 <h4 class="movieTitle">${currentMovie.Title}</h4>
                                 <h5 class="releaseDate">${currentMovie.Year}</h5>
-                                <button class="btn btn-outline-primary btn-lg add" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
+                                <button class="btn btn-outline-primary btn-lg add" onclick="savheToWatchlist('${currentMovie.imdbID}')">Add</button>
                                 <button class="btn btn-outline-danger btn-lg remove" onclick="#">Remove</button>
                             </div>
                  </div>
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
                         <div class= card-body>
                             <h4 class="movieTitle">${currentMovie.Title}</h4>
 						    <h5 class="releaseDate">${currentMovie.Year}</h5>
-                            <button class="btn btn-outline-primary btn-lg add" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</button>
+                            <button class="btn btn-outline-primary btn-lg add" onclick="savegToWatchlist('${currentMovie.imdbID}')">Add</button>
                             <button class="btn btn-outline-danger btn-lg remove" onclick="removeFromWatchlist('${currentMovie.imdbID}')">Remove</button>
                         </div>
              </div>
@@ -50,11 +51,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 function saveToWatchlist(imdbID){
-    var movie = returnedMovies.find(function (currentMovie){
+    let movie = returnedMovies.find(currentMovie => currentMovie.imdbID == imdbID) 
+    /* let movie = returnedMovies.find(function (currentMovie){
         return currentMovie.imdbID == imdbID;  
-    });
-    var watchlistJSON = localStorage.getItem('watchlist');
-    var watchlist = JSON.parse(watchlistJSON);
+    }) */;
+    let watchlistJSON = localStorage.getItem('watchlist');
+    let watchlist = JSON.parse(watchlistJSON);
     if (watchlist == null) {
         watchlist = [];
     }
